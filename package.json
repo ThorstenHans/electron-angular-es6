@@ -1,0 +1,32 @@
+{
+  "name": "electron-sample",
+  "version": "1.0.0",
+  "description": "My first electron app",
+  "main": "app/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "electron-app"
+  ],
+  "author": "Thorsten Hans",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp-babel": "^5.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-run": "^1.6.8"
+  },
+  "jspm": {
+    "directories": {
+      "baseURL": "browser"
+    },
+    "dependencies": {
+      "angular": "github:angular/bower-angular@^1.3.15"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.1.13",
+      "babel-runtime": "npm:babel-runtime@^5.1.13",
+      "core-js": "npm:core-js@^0.9.4"
+    }
+  }
+}

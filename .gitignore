@@ -1,0 +1,4 @@
+node_modules
+jspm_packages
+*.swp
+.DS_Store
