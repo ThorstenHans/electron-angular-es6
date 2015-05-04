@@ -14,10 +14,13 @@ cd electron-sample
 echo "project structure created.. installing global node modules..."
 npm i gulp electron-prebuilt jspm -g
 
+echo "initializing npm package"
+npm init
+
 echo "global dependencies installed... installing local dependencies"
 npm i gulp-babel gulp-rename gulp-run --save-dev
 
-echo "dependencies installed... update your package.json"
-echo "and run jspm install"
+echo "dependencies installed..."
+echo "run jspm install"
 
 
