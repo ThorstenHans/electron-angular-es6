@@ -12,7 +12,11 @@
   "author": "Thorsten Hans",
   "license": "MIT",
   "devDependencies": {
+    "electron-prebuilt": "^0.25.2",
+    "gulp": "^3.8.11",
+    "gulp-asar": "0.0.2",
     "gulp-babel": "^5.1.0",
+    "gulp-clean": "^0.3.1",
     "gulp-rename": "^1.2.2",
     "gulp-run": "^1.6.8"
   },
