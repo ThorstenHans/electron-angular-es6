@@ -18,9 +18,11 @@ app.on('ready', function () {
         width: 800,
         height: 600
     });
-    mainWindow.setTitle(app.getName());
-    mainWindow.loadUrl('file://' + __dirname + '/../browser/index.html');
 
+    mainWindow.loadUrl('file://' + __dirname + '/../browser/index.html');
+    mainWindow.webContents.on('did-finish-load', function () {
+        mainWindow.setTitle(app.getName());
+    });
     mainWindow.on('closed', function () {
         mainWindow = null;
     });
