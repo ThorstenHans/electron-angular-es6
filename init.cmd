@@ -3,9 +3,9 @@ mkdir electron-sample\browser\scripts\splash
 cd electron-sample
 type NUL > Gulpfile.js
 type NUL > app\index.es6.js
-type NUL > browser/index.html
-type NUL > browser/scripts/splash/app.js
-type NUL > browser/scripts/splash/controller.js
+type NUL > browser\index.html
+type NUL > browser\scripts\splash\app.js
+type NUL > browser\scripts\splash\controller.js
 
 echo "project structure created.. installing global node modules..."
 npm i gulp electron-prebuilt jspm -g
