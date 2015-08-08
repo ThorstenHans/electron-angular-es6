@@ -1,11 +1,11 @@
 var gulp = require('gulp'),
   babel = require('gulp-babel'),
-  run = require('gulp-run'),
+  runSequence = require('run-sequence'),
   rename = require('gulp-rename'),
-  asar  = require('gulp-asar'),
-  clean = require('gulp-clean');
+  electron  = require('gulp-atom-electron'),
+  del = require('del');
 
-gulp.task('transpile-app', function() {
+gulp.task('transpile:app', function() {
   return gulp.src('app/index.es6.js')
     .pipe(babel())
     .pipe(rename('index.js'))
@@ -14,23 +14,24 @@ gulp.task('transpile-app', function() {
 
 
 gulp.task('clean', function(){
-    return gulp.src('package', {read: false})
-        .pipe(clean({force: true}));
+    return del('package', {force: true});
 });
 
-gulp.task('copy-app', ['clean'], function(){
+gulp.task('copy:app', ['clean'], function(){
     return gulp.src(['app/**/*', 'browser/**/*', 'package.json'], {base: '.'})
         .pipe(gulp.dest('package'));
 });
 
-gulp.task('package', ['copy-app'], function(){
-    return gulp.src('package/**/*')
-        .pipe(asar('app.asar'))
-        .pipe(gulp.dest('dist'));
+
+gulp.task('build', function() {
+  return gulp.src('package/**')
+        .pipe(electron({ 
+          version: '0.30.3', 
+          // build for OSX
+          platform: 'darwin' }))
+        .pipe(electron.zfsdest('dist/es6-ng-electron.zip'));
 });
 
-gulp.task('run', ['default'], function() {
-  return run('electron .').exec();
-});
-
-gulp.task('default', ['transpile-app']);
+gulp.task('default', function(){
+    return runSequence('clean', 'transpile:app', 'copy:app','build');
+  });

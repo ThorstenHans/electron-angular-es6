@@ -4,21 +4,20 @@
   "description": "My first electron app",
   "main": "app/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "jspm install"
   },
   "keywords": [
     "electron-app"
   ],
   "author": "Thorsten Hans",
+  "repository": "https://github.com/ThorstenHans/electron-angular-es6",
   "license": "MIT",
   "devDependencies": {
-    "electron-prebuilt": "^0.25.2",
+    "del": "^1.2.0",
     "gulp": "^3.8.11",
-    "gulp-asar": "0.0.2",
+    "gulp-atom-electron": "^0.12.0",
     "gulp-babel": "^5.1.0",
-    "gulp-clean": "^0.3.1",
-    "gulp-rename": "^1.2.2",
-    "gulp-run": "^1.6.8"
+    "run-sequence": "^1.1.2"
   },
   "jspm": {
     "directories": {

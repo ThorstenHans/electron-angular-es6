@@ -8,7 +8,8 @@ require('crash-reporter').start();
 var mainWindow = null;
 
 app.on('window-all-closed', function () {
-    if (process.platform != 'darwin') {
+    // force app termination on OSX when mainWindow has been closed
+    if (process.platform == 'darwin') {
         app.quit();
     }
 });
@@ -18,6 +19,9 @@ app.on('ready', function () {
         width: 800,
         height: 600
     });
+
+    // open dev tools after window has been created
+    // mainWindow.openDevTools();
 
     mainWindow.loadUrl('file://' + __dirname + '/../browser/index.html');
     mainWindow.webContents.on('did-finish-load', function () {
