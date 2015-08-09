@@ -6,10 +6,10 @@ var gulp = require('gulp'),
   del = require('del');
 
 gulp.task('transpile:app', function() {
-  return gulp.src('app/index.es6.js')
+  return gulp.src('main/index.es6.js')
     .pipe(babel())
     .pipe(rename('index.js'))
-    .pipe(gulp.dest('app'));
+    .pipe(gulp.dest('main'));
 });
 
 
@@ -18,7 +18,7 @@ gulp.task('clean', function(){
 });
 
 gulp.task('copy:app', ['clean'], function(){
-    return gulp.src(['app/**/*', 'browser/**/*', 'package.json'], {base: '.'})
+    return gulp.src(['main/**/*', 'renderer/**/*', 'package.json'], {base: '.'})
         .pipe(gulp.dest('package'));
 });
 

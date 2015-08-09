@@ -2,7 +2,7 @@
   "name": "electron-sample",
   "version": "1.0.0",
   "description": "My first electron app",
-  "main": "app/index.js",
+  "main": "main/index.js",
   "scripts": {
     "postinstall": "jspm install"
   },

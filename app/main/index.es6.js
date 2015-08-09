@@ -1,9 +1,25 @@
 let app = require('app');
+let ipc = require('ipc');
+let crashReporter = require('crash-reporter');
 let BrowserWindow = require('browser-window');
 
-require('crash-reporter').start();
+
+crashReporter.start({
+  productName: 'es6-ng-electron',
+  companyName: 'FooBar',
+  submitUrl: 'http://localhost:3000/',
+  autoSubmit: true
+});
 
 var mainWindow = null;
+
+ipc.on('crash', (event, arg)=>{
+    process.crash(arg);
+});
+
+ipc.on('devTools', (event,arg) =>{
+    mainWindow.openDevTools();
+});
 
 app.on('window-all-closed', () => {
     // force app termination on OSX when mainWindow has been closed
@@ -17,9 +33,6 @@ app.on('ready', () => {
         width: 800,
         height: 600
     });
-    
-    // open dev tools after window has been created
-    // mainWindow.openDevTools();
     
     mainWindow.loadUrl('file://' + __dirname + '/../browser/index.html');
     mainWindow.webContents.on('did-finish-load',() =>{
