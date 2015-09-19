@@ -18,15 +18,15 @@ gulp.task('clean', function(){
 });
 
 gulp.task('copy:app', ['clean'], function(){
-    return gulp.src(['main/**/*', 'renderer/**/*', 'package.json'], {base: '.'})
+    return gulp.src(['main/**/*', 'browser/**/*', 'package.json'], {base: '.'})
         .pipe(gulp.dest('package'));
 });
 
 
 gulp.task('build', function() {
   return gulp.src('package/**')
-        .pipe(electron({ 
-          version: '0.30.3', 
+        .pipe(electron({
+          version: '0.30.3',
           // build for OSX
           platform: 'darwin' }))
         .pipe(electron.zfsdest('dist/es6-ng-electron.zip'));
