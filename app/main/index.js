@@ -15,9 +15,7 @@ crashReporter.start({
 var mainWindow = null;
 
 ipc.on('crash', function (event, arg) {
-    try {
-        process.crash(arg);
-    } catch (e) {}
+    process.crash(arg);
 });
 
 ipc.on('devTools', function (event, arg) {
@@ -36,9 +34,6 @@ app.on('ready', function () {
         width: 800,
         height: 600
     });
-
-    // open dev tools after window has been created
-    mainWindow.openDevTools();
 
     mainWindow.loadUrl('file://' + __dirname + '/../browser/index.html');
     mainWindow.webContents.on('did-finish-load', function () {
