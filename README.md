@@ -2,12 +2,6 @@
 
 This is a fork of the work of Thorsten Hans (original README below), corrected, completed, updated and adapted to my needs.
 
-## Caveat
-Whenever you ran 'jspm init' correct line 2 of browser/config.js to:
-
-``baseURL: __dirname + "/",``
-
-
 ----------------
 original README (at time of fork):
 ----------------
